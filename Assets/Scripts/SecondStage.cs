@@ -4,40 +4,35 @@ using UnityEngine;
 
 public class SecondStage : StateMachineBehaviour
 {
-    public float stageTime;
-    public GameObject[] tampolines;
-    public GameObject[] rings;
 
-    float timer;
+
+
+    GameObject[] obstacles = new GameObject[2];
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        timer = 0.0f;
-    }
+        obstacles[0] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        obstacles[1] = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        timer += Time.deltaTime;
-        Debug.Log(timer);
-        if (timer >= stageTime)
-            animator.SetTrigger("NextStage");
+        foreach (GameObject g in obstacles)
+        {
+            float r = Random.Range(12f, 16f);
+            float fi = Random.Range(0f, 360f);
+            float x = r * Mathf.Cos(fi);
+            float z = r * Mathf.Sin(fi);
+
+            g.transform.position = new Vector3(x, 0f, z);
+            g.transform.localScale = new Vector3(3f, 6f, 3f);
+            g.transform.rotation = Quaternion.Euler(0,fi, 0);
+
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        Object.Destroy(obstacles[0]);
+        Object.Destroy(obstacles[1]);
+    }
 }
