@@ -1,39 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    public GameObject player;
     public GameObject player1;
+    public GameObject player2;
+    public GameObject text1;
+    public GameObject text2;   
+    public GameObject resume1;
+    public GameObject resume2;
 
-    public GameObject playerText;
-    public GameObject playerText1;
+    int stage;
+    bool playerSwitch;
 
-    int playersCounter;
 
 
     void Start()
     {
-        playersCounter = 2;
+        stage = 0;
+        playerSwitch = true;
     }
     void Update()
     {
-        if(playersCounter==1)
-        {
 
-        }
     }
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject == player1)
         {
-            other.gameObject.SetActive(false);
-            
+            text1.GetComponent<Text>().text = "You Lost!!";
+            text1.SetActive(true);
+
+            text2.GetComponent<Text>().text = "You Win!!";
+            text2.SetActive(true);
+
+            PauseGame();
+        }
+        else if(other.gameObject == player2)
+        {
+            text2.GetComponent<Text>().text = "You Lost!!";
+            text2.SetActive(true);
+
+            text1.GetComponent<Text>().text = "You Win!!";
+            text1.SetActive(true);
+
+            PauseGame();
         }
     }
 
+    void ResumeGame()
+    {
+        Time.timeScale = 1;
+        resume1.SetActive(false);
+        resume2.SetActive(false);
+    }
+
+    void PauseGame()
+    {
+        Time.timeScale = 0;
+        resume1.SetActive(true);
+        resume2.SetActive(true);
+    }
 
 
 }
