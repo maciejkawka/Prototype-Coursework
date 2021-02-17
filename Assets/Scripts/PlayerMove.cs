@@ -7,12 +7,16 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     bool isJumping;
     float smoothVelocity;
-
+    bool isEnabled;
     public float walkingForce;
     public float jumpForce;
     public float jumpSpeedBump;
     public Transform cameraTransform;
-
+    
+    public void EnablePlayer(bool enabled)
+    {
+      isEnabled = enabled;
+    }
     public void SetJumping(bool jump)
     {
        isJumping = jump;
@@ -28,6 +32,8 @@ public class PlayerMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isEnabled)
+            return;
         Move();
         if (Input.GetKey(KeyCode.Space) && !isJumping)
             Jump();
