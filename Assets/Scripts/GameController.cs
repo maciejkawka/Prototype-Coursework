@@ -80,9 +80,6 @@ public class GameController : MonoBehaviour
             state = GameState.End;
             Time.timeScale = 0;
         }
-
-
-
     }
 
     void StartState()

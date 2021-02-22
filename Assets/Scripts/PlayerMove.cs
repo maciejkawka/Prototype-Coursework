@@ -8,6 +8,7 @@ public class PlayerMove : MonoBehaviour
     bool isJumping;
     float smoothVelocity;
     bool isEnabled;
+
     public float walkingForce;
     public float jumpForce;
     public float jumpSpeedBump;
@@ -57,8 +58,7 @@ public class PlayerMove : MonoBehaviour
             Vector3 moveDirection = (Quaternion.Euler(0.0f, rotateAngle, 0.0f) * Vector3.forward).normalized;
 
             if(!isJumping)
-                  rb.AddForce(moveDirection * walkingForce, ForceMode.VelocityChange);
-            
+                  rb.AddForce(moveDirection * walkingForce, ForceMode.VelocityChange);      
         }
     }
     void Jump()

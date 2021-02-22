@@ -22,7 +22,6 @@ public class RotateRing : MonoBehaviour
           transform.Rotate(new Vector3(0, 90, 0) * Time.deltaTime / rotateSpeed);
         else
           transform.Rotate(new Vector3(0, -90, 0) * Time.deltaTime / rotateSpeed);
-
     }
 
     void OnCollisionStay(Collision collision)

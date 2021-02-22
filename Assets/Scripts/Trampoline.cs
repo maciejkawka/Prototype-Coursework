@@ -8,7 +8,7 @@ public class Trampoline : MonoBehaviour
     public float disableTime = 0.5f;
 
     Animator animator;
-    float timer = 2f;
+    float timer = 0f;
 
     void Start()
     {
