@@ -15,7 +15,6 @@ public class RotateRing : MonoBehaviour
         isRotating = enable;
     }
 
-
     void Update()
     {
         if(clockWise)

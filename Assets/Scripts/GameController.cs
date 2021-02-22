@@ -24,10 +24,8 @@ public class GameController : MonoBehaviour
     public GameObject camera1;
     public GameObject camera2;
 
-
     bool playerSwitch;
     GameState state;
-
 
     void Start()
     {
@@ -110,7 +108,6 @@ public class GameController : MonoBehaviour
             playerSwitch = !playerSwitch;
             player1.GetComponent<PlayerMove>().EnablePlayer(playerSwitch);
             player2.GetComponent<PlayerMove>().EnablePlayer(!playerSwitch);
-
         }
     }
 

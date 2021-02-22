@@ -21,7 +21,7 @@ public class Trampoline : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Player"&& timer<=0)
+        if(collision.gameObject.tag == "Player" && timer<=0)
         {
             timer=disableTime;
             Vector3 kickOff = transform.rotation * force;

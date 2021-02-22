@@ -7,8 +7,8 @@ public class CameraMove : MonoBehaviour
     public Transform playerTransform;
     public float rotateSpeed = 5.0f;
     public float smoothFactor = 0.5f;
-    bool isEnabled;
 
+    bool isEnabled;
     Vector3 cameraOffset;
     Vector3 tempOffset;
     public void EnableMove(bool state)
@@ -20,7 +20,6 @@ public class CameraMove : MonoBehaviour
         cameraOffset = transform.position - playerTransform.position;
         isEnabled = true;
     }
-
 
     void LateUpdate()
     { 

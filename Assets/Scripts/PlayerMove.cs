@@ -6,8 +6,8 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody rb;
     bool isJumping;
-    float smoothVelocity;
     bool isEnabled;
+    float smoothVelocity;
 
     public float walkingForce;
     public float jumpForce;
@@ -30,7 +30,6 @@ public class PlayerMove : MonoBehaviour
         isJumping = false;
     }
 
-
     void FixedUpdate()
     {
         if (!isEnabled)
@@ -38,7 +37,6 @@ public class PlayerMove : MonoBehaviour
         Move();
         if (Input.GetKey(KeyCode.Space) && !isJumping)
             Jump();
-
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, 5);
     }
     void Move()
